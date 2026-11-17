@@ -1,9 +1,10 @@
+import JobListings from "../componentes/JobListings"
 
 const JobsPage = () => {
   return (
-    <div>
-      jobs page
-    </div>
+    <section className='bg-blue-50 px-4 py-6'>
+      <JobListings isHome={false}/>
+    </section>
   )
 }
 

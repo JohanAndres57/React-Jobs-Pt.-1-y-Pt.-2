@@ -1,8 +1,8 @@
 import JobListing from "./jobListing"
 import Jobs from "../componentes/Jobs.json"
 
-const JobListings = () => {
-    const recentJobs = Jobs.jobs.slice(0,3)
+const JobListings = ({isHome}) => {
+    const recentJobs = isHome ? Jobs.jobs.slice(0,3) : Jobs.jobs
   return (
     <section className="bg-blue-50 px-4 py-10">
       <div className="container-xl lg:container m-auto">
