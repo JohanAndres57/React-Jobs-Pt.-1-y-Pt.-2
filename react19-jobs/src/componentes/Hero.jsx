@@ -1,10 +1,7 @@
-import React from 'react'
 
-const Hero = ({titulo="convierte en un desarrollador de React",subtitulo="Encuentra el trabajo de React que se adapte a tus habilidades y necesidades"}) => {
+const hero = (props) => {
   return (
-    <div>
-      {/* <!-- Hero --> */}
-    <section className="bg-indigo-700 py-20 mb-4">
+   <section className="bg-indigo-700 py-20 mb-4">
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center"
       >
@@ -12,16 +9,15 @@ const Hero = ({titulo="convierte en un desarrollador de React",subtitulo="Encuen
           <h1
             className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl"
           >
-            {titulo}
+            {props.titulo}
           </h1>
           <p className="my-4 text-xl text-white">
-            {subtitulo}
+            {props.subtitulo}
           </p>
         </div>
       </div>
-    </section> 
-    </div>
+    </section>
   )
 }
 
-export default Hero
+export default hero
