@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {HiLocationMarker} from 'react-icons/hi'
 import { Link } from 'react-router'
+
 const JobListing = ({job}) => {
 const [showFullDescription, setFullDescription ] = useState(false)
   let description = job.description
