@@ -11,7 +11,7 @@ const JobPage = () => {
   useEffect( () => {
     const fetchJob = async () => {
         try {
-            const result = await fetch('/api/jobs/+id')
+            const result = await fetch('/api/jobs/' + id)
             const data = await result.json()
             setJob(data)
         } catch (error){
@@ -21,16 +21,17 @@ const JobPage = () => {
         }
     }
     fetchJob()
-  } ,[])
+  } ,[id])
   return (
     <div>
         {cargando ? 
-                  (<Spinner loading={cargando}/>)
-                  :(
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6"> 
-                        <JobListing key={job.id}job={job}/>
-                  
+                  (<Spinner cargando={cargando}/>)
+                  : job ? (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <JobListing key={job.id} job={job}/>
                     </div>
+                  ) : (
+                    <p className="text-center py-10">No se encontró el empleo.</p>
                   )
                 } 
     </div>

@@ -16,8 +16,7 @@ return (
               <div className="p-4">
                 <div className="mb-6">
                   <div className="text-gray-600 my-2">{job.type}</div>
-                  <h3 className="text-xl font-bold">
-                  </h3>
+                  <h3 className="text-xl font-bold">{job.title}</h3>
                 </div>
 
                 <div className="mb-5">
@@ -25,7 +24,7 @@ return (
                 </div>
 
 
-                <button onClick={()=> setFullDescription((prevState) => !prevState)} className="text-indigo-500 mb-5 haver:text-indigo-600">
+                <button onClick={()=> setFullDescription((prevState) => !prevState)} className="text-indigo-500 mb-5 hover:text-indigo-600">
 {showFullDescription? "Menos" : "Leer Más"}
                 </button>
 

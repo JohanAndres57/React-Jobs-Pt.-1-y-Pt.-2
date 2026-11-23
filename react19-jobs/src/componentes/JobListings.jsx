@@ -5,7 +5,7 @@ import Spinner from "./Spinner"
 
 const JobListings = ({isHome}) => {
   const [jobs,setJobs] = useState([])
-  const [cargador, setCargador] = useState(true)
+  const [cargando, setCargando] = useState(true)
   
   useEffect( () => {
     const apiUrl = isHome 
@@ -17,13 +17,13 @@ const JobListings = ({isHome}) => {
         const data = await resultado.json()
         setJobs(data.data)
       } catch (error) {
-        
+        console.log('Error trayendo los datos', error)
       }finally{
-        setCargador(false)
+        setCargando(false)
       }
     }
     fetchJobs()
-  },[])
+  },[isHome])
 
   return (
     <section className="bg-blue-50 px-4 py-10">
@@ -34,11 +34,11 @@ const JobListings = ({isHome}) => {
 
         
           {cargando ? 
-          (<Spinner loading={cargando}/>)
+          (<Spinner cargando={cargando}/>)
           :(
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {jobs.map((job) => (
-           <JobListing key={job.id}job={job}/>
+           <JobListing key={job.id} job={job}/>
           ))}
             </div>
           )
