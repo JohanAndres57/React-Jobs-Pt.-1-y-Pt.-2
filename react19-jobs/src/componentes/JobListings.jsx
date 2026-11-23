@@ -1,8 +1,30 @@
-import JobListing from "./jobListing"
-import Jobs from "../componentes/Jobs.json"
+import JobListing from "./JobListing"
+import { useState, useEffect } from "react"
+import Spinner from "./Spinner"
+
 
 const JobListings = ({isHome}) => {
-    const recentJobs = isHome ? Jobs.jobs.slice(0,3) : Jobs.jobs
+  const [jobs,setJobs] = useState([])
+  const [cargador, setCargador] = useState(true)
+  
+  useEffect( () => {
+    const apiUrl = isHome 
+                  ? '/api/jobs?_page=1&_per_page=3'
+                  : '/api/jobs?_page=1&_per_page=6'                 
+    const fetchJobs = async () => {
+      try {
+        const resultado = await fetch(apiUrl)
+        const data = await resultado.json()
+        setJobs(data.data)
+      } catch (error) {
+        
+      }finally{
+        setCargador(false)
+      }
+    }
+    fetchJobs()
+  },[])
+
   return (
     <section className="bg-blue-50 px-4 py-10">
       <div className="container-xl lg:container m-auto">
@@ -10,11 +32,19 @@ const JobListings = ({isHome}) => {
           Browse Jobs
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {recentJobs.map((job) => (
+        
+          {cargando ? 
+          (<Spinner loading={cargando}/>)
+          :(
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {jobs.map((job) => (
            <JobListing key={job.id}job={job}/>
           ))}
-        </div>
+            </div>
+          )
+        }
+          
+        
       </div>
     </section>
   )
