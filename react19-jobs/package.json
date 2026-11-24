@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch src/Jobs.json --port 5000"
+    "server": "json-server --watch src/componentes/Jobs.json --port 5000"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.5",
@@ -17,6 +17,7 @@
     "react-icons": "^5.7.0",
     "react-router": "^8.5.1",
     "react-spinners": "^0.17.1",
+    "react-toastify": "^11.2.0",
     "tailwindcss": "^4.3.5"
   },
   "devDependencies": {
